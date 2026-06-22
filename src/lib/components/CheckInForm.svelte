@@ -17,7 +17,9 @@
 		TicketCheck,
 		MapPlus,
 		ExternalLink,
-		Plus
+		Plus,
+		Route,
+		Settings2
 	} from '@lucide/svelte';
 	import { config } from '$lib/stores/config.svelte';
 	import { journey } from '$lib/stores/journey.svelte';
@@ -435,11 +437,11 @@
 					<div
 						class="flex h-10 w-10 items-center justify-center rounded-box bg-primary/12 text-primary"
 					>
-						<PlaneTakeoff class="h-5 w-5" />
+						<Route class="h-5 w-5" />
 					</div>
 					<div class="space-y-1">
 						<h3 class="card-title text-base">{m.form_section_route()}</h3>
-						<p class="text-sm text-base-content/60">{m.form_lookup_hint()}</p>
+						<p class="text-sm text-base-content/60">-TODO-</p>
 					</div>
 				</div>
 
@@ -596,11 +598,11 @@
 					<div
 						class="flex h-10 w-10 items-center justify-center rounded-box bg-accent/18 text-base-content"
 					>
-						<Eye class="h-5 w-5" />
+						<Settings2 class="h-5 w-5" />
 					</div>
 					<div class="space-y-1">
 						<h3 class="card-title text-base">{m.form_section_options()}</h3>
-						<p class="text-sm text-base-content/60">{m.settings_defaults_note()}</p>
+						<p class="text-sm text-base-content/60">-TODO-</p>
 					</div>
 				</div>
 
@@ -645,7 +647,7 @@
 						</div>
 						<div class="space-y-1">
 							<h3 class="card-title text-base">{m.form_trip_lookup_title()}</h3>
-							<p class="text-sm text-base-content/60">{m.form_autosearch_hint()}</p>
+							<p class="text-sm text-base-content/60">{m.form_lookup_hint()}</p>
 						</div>
 					</div>
 					{#if tripLookupStatus === 'found' && foundDeparture}
@@ -712,8 +714,6 @@
 						<CircleAlert class="h-4 w-4" />
 						<span>{submitError}</span>
 					</div>
-				{:else}
-					<div class="badge badge-ghost badge-lg w-fit">{m.form_lookup_hint()}</div>
 				{/if}
 
 				{#if showDepartureList && availableDepartures.length > 0}

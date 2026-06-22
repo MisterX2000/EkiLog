@@ -2,10 +2,10 @@
 	import {
 		TrainFront,
 		ScanLine,
-		Route,
 		Trash2,
 		Settings as SettingsIcon,
-		Map as MapIcon
+		Map as MapIcon,
+		MapPinned
 	} from '@lucide/svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { locales, getLocale, setLocale } from '$lib/paraglide/runtime';
@@ -95,7 +95,7 @@
 								</div>
 								<div>
 									<h2 class="card-title text-base">{m.scanner_title()}</h2>
-									<p class="text-sm text-base-content/60">{m.scanner_drag_drop()}</p>
+									<p class="text-sm text-base-content/60">-TODO-</p>
 								</div>
 							</div>
 							<Scanner />
@@ -109,11 +109,11 @@
 									<div
 										class="flex h-10 w-10 items-center justify-center rounded-box bg-primary/12 text-primary"
 									>
-										<Route class="h-5 w-5" />
+										<MapIcon class="h-5 w-5" />
 									</div>
 									<div>
 										<h2 class="card-title text-base">{m.form_journey_details()}</h2>
-										<p class="text-sm text-base-content/60">{m.form_autosearch_hint()}</p>
+										<p class="text-sm text-base-content/60">-TODO-</p>
 									</div>
 								</div>
 								<button
@@ -145,11 +145,11 @@
 										<div
 											class="flex h-10 w-10 items-center justify-center rounded-box bg-accent/18 text-base-content"
 										>
-											<MapIcon class="h-5 w-5" />
+											<MapPinned class="h-5 w-5" />
 										</div>
 										<div>
 											<h2 class="card-title text-base">{m.nav_map_title()}</h2>
-											<p class="text-sm text-base-content/60">{m.nav_map_placeholder()}</p>
+											<p class="text-sm text-base-content/60">-TODO-</p>
 										</div>
 									</div>
 								</div>
@@ -170,7 +170,7 @@
 							<div
 								class="card-body items-center justify-center gap-3 py-10 text-center text-base-content/60"
 							>
-								<MapIcon class="h-6 w-6" />
+								<MapPinned class="h-6 w-6" />
 								<p>{m.nav_map_placeholder()}</p>
 							</div>
 						</section>
