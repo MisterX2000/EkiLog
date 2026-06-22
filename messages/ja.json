@@ -34,7 +34,7 @@
 	"form_train_number": "列車番号",
 	"form_car_number": "号車",
 	"form_seat_number": "座席番号",
-	"form_seat_comment_filled": "\ud83e\udea8 号車と座席番号がTräwellingのステータスコメントに追加されます。",
+	"form_seat_comment_filled": "号車と座席番号がTräwellingのステータスコメントに追加されます。",
 	"form_seat_comment_empty": "任意 \u2014 入力した場合、号車と座席番号がTräwellingのステータスコメントに追加されます。",
 
 	"form_visibility": "公開設定",
@@ -69,7 +69,7 @@
 	"form_creating_trip": "乗車を作成中\u2026",
 	"form_create_manual_trip_btn": "手動乗車を作成",
 
-	"form_no_token_warning": "\u26a0 Träwellingトークンが未設定です。設定で追加してください。",
+	"form_no_token_warning": "Träwellingトークンが未設定です。設定で追加してください。",
 	"form_checking_in": "チェックイン中\u2026",
 	"form_check_in_btn": "Träwellingにチェックイン",
 

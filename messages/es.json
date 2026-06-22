@@ -34,7 +34,7 @@
 	"form_train_number": "Número del tren",
 	"form_car_number": "Número de vagón",
 	"form_seat_number": "Número de asiento",
-	"form_seat_comment_filled": "\ud83e\udea8 El vagón y asiento se añadirán al comentario de tu estado en Träwelling.",
+	"form_seat_comment_filled": "El vagón y asiento se añadirán al comentario de tu estado en Träwelling.",
 	"form_seat_comment_empty": "Opcional \u2014 si se rellena, el vagón y asiento se añaden al comentario de estado de Träwelling.",
 
 	"form_visibility": "Visibilidad",
@@ -69,7 +69,7 @@
 	"form_creating_trip": "Creando viaje\u2026",
 	"form_create_manual_trip_btn": "Crear viaje manual",
 
-	"form_no_token_warning": "\u26a0 Token de Träwelling no configurado. Ve a Ajustes para añadirlo.",
+	"form_no_token_warning": "Token de Träwelling no configurado. Ve a Ajustes para añadirlo.",
 	"form_checking_in": "Haciendo check-in\u2026",
 	"form_check_in_btn": "Hacer check-in en Träwelling",
 

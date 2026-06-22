@@ -34,7 +34,7 @@
 	"form_train_number": "Zugnummer",
 	"form_car_number": "Wagennummer",
 	"form_seat_number": "Sitznummer",
-	"form_seat_comment_filled": "\ud83e\udea8 Wagen und Sitz werden zum Tr\u00e4welling-Statuskommentar hinzugef\u00fcgt.",
+	"form_seat_comment_filled": "Wagen und Sitz werden zum Tr\u00e4welling-Statuskommentar hinzugef\u00fcgt.",
 	"form_seat_comment_empty": "Optional \u2014 falls ausgef\u00fcllt, werden Wagen und Sitz zum Tr\u00e4welling-Statuskommentar hinzugef\u00fcgt.",
 
 	"form_visibility": "Sichtbarkeit",
@@ -69,7 +69,7 @@
 	"form_creating_trip": "Fahrt wird erstellt\u2026",
 	"form_create_manual_trip_btn": "Manuelle Fahrt erstellen",
 
-	"form_no_token_warning": "\u26a0 Tr\u00e4welling-Token nicht konfiguriert. Gehe zu Einstellungen.",
+	"form_no_token_warning": "Tr\u00e4welling-Token nicht konfiguriert. Gehe zu Einstellungen.",
 	"form_checking_in": "Check-in l\u00e4uft\u2026",
 	"form_check_in_btn": "Bei Tr\u00e4welling einchecken",
 

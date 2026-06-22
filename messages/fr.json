@@ -34,7 +34,7 @@
 	"form_train_number": "Numéro du train",
 	"form_car_number": "Numéro de voiture",
 	"form_seat_number": "Numéro de siège",
-	"form_seat_comment_filled": "\ud83e\udea8 La voiture et le siège seront ajoutés à votre commentaire de statut Träwelling.",
+	"form_seat_comment_filled": "La voiture et le siège seront ajoutés à votre commentaire de statut Träwelling.",
 	"form_seat_comment_empty": "Optionnel \u2014 si renseigné, la voiture et le siège sont ajoutés au commentaire de statut Träwelling.",
 
 	"form_visibility": "Visibilité",
@@ -69,7 +69,7 @@
 	"form_creating_trip": "Création du trajet\u2026",
 	"form_create_manual_trip_btn": "Créer un trajet manuel",
 
-	"form_no_token_warning": "\u26a0 Token Träwelling non configuré. Allez dans Paramètres pour l'ajouter.",
+	"form_no_token_warning": "Token Träwelling non configuré. Allez dans Paramètres pour l'ajouter.",
 	"form_checking_in": "Check-in en cours\u2026",
 	"form_check_in_btn": "S'enregistrer sur Träwelling",
 
