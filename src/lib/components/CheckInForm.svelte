@@ -441,7 +441,7 @@
 					</div>
 					<div class="space-y-1">
 						<h3 class="card-title text-base">{m.form_section_route()}</h3>
-						<p class="text-sm text-base-content/60">-TODO-</p>
+						<p class="text-sm text-base-content/60">{m.form_section_route_subtitle()}</p>
 					</div>
 				</div>
 
@@ -602,7 +602,7 @@
 					</div>
 					<div class="space-y-1">
 						<h3 class="card-title text-base">{m.form_section_options()}</h3>
-						<p class="text-sm text-base-content/60">-TODO-</p>
+						<p class="text-sm text-base-content/60">{m.form_section_options_subtitle()}</p>
 					</div>
 				</div>
 

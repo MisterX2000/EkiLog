@@ -6,10 +6,12 @@
 	"nav_settings": "設定",
 	"nav_clear_inputs": "すべての入力をクリア",
 	"nav_map_title": "経路マップ",
+	"nav_map_subtitle": "出発駅・到着駅および移動経路のインタラクティブマップ。",
 	"nav_map_placeholder": "両駅の座標が解決されると地図が表示されます",
 	"station_use_current_location": "現在地を使う",
 
 	"scanner_title": "OCRチケットスキャナー",
+	"scanner_subtitle": "チケットの写真をアップロードして、列車や駅の詳細を自動抽出します。",
 	"scanner_scanning": "Gemini AIでチケットをスキャン中\u2026",
 	"scanner_success": "チケットをスキャンしました \u2014 以下の詳細を確認してください",
 	"scanner_click_upload": "クリックしてアップロード",
@@ -20,9 +22,12 @@
 	"scanner_error_no_key": "先に設定でGemini APIキーを設定してください。",
 
 	"form_journey_details": "乗車詳細",
+	"form_journey_details_subtitle": "Träwellingにチェックインする前に、乗車詳細を確認・設定してください。",
 	"form_section_route": "経路",
+	"form_section_route_subtitle": "出発駅・到着駅と乗車日時を選択します。",
 	"form_section_train": "列車",
 	"form_section_options": "オプション",
+	"form_section_options_subtitle": "チェックインの公開範囲と利用目的を設定します。",
 
 	"form_departure_station": "出発駅",
 	"form_arrival_station": "到着駅",

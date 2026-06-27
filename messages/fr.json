@@ -6,10 +6,12 @@
 	"nav_settings": "Paramètres",
 	"nav_clear_inputs": "Effacer tous les champs",
 	"nav_map_title": "Carte du trajet",
+	"nav_map_subtitle": "Vue interactive des gares de départ et d'arrivée ainsi que du trajet.",
 	"nav_map_placeholder": "La carte apparaîtra lorsque les coordonnées des deux gares seront résolues",
 	"station_use_current_location": "Utiliser la position actuelle",
 
 	"scanner_title": "Scanner OCR de Billets",
+	"scanner_subtitle": "Téléchargez une photo du billet pour extraire automatiquement les détails du train et des gares.",
 	"scanner_scanning": "Scan du billet avec Gemini IA\u2026",
 	"scanner_success": "Billet scanné \u2014 vérifiez les détails ci-dessous",
 	"scanner_click_upload": "Cliquez pour télécharger",
@@ -20,9 +22,12 @@
 	"scanner_error_no_key": "Veuillez d'abord configurer votre clé API Gemini dans les Paramètres.",
 
 	"form_journey_details": "Détails du trajet",
+	"form_journey_details_subtitle": "Vérifiez et configurez les détails de votre trajet avant l'enregistrement sur Träwelling.",
 	"form_section_route": "Itinéraire",
+	"form_section_route_subtitle": "Sélectionnez les gares de départ et d'arrivée ainsi que les horaires du trajet.",
 	"form_section_train": "Train",
 	"form_section_options": "Options",
+	"form_section_options_subtitle": "Configurez la visibilité de l'enregistrement et le motif du trajet.",
 
 	"form_departure_station": "Gare de départ",
 	"form_arrival_station": "Gare d'arrivée",

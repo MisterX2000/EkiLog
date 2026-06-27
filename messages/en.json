@@ -6,10 +6,12 @@
 	"nav_settings": "Settings",
 	"nav_clear_inputs": "Clear all inputs",
 	"nav_map_title": "Route Map",
+	"nav_map_subtitle": "Interactive view of your departure and arrival stations and travel route.",
 	"nav_map_placeholder": "Map will appear when both station coordinates are resolved",
 	"station_use_current_location": "Use current location",
 
 	"scanner_title": "OCR Ticket Scanner",
+	"scanner_subtitle": "Upload a ticket photo to automatically extract train and station details.",
 	"scanner_scanning": "Scanning ticket with Gemini AI\u2026",
 	"scanner_success": "Ticket scanned \u2014 review details below",
 	"scanner_click_upload": "Click to upload",
@@ -20,9 +22,12 @@
 	"scanner_error_no_key": "Please set your Gemini API key in Settings first.",
 
 	"form_journey_details": "Journey Details",
+	"form_journey_details_subtitle": "Review and configure your trip details before checking in to Träwelling.",
 	"form_section_route": "Route",
+	"form_section_route_subtitle": "Select departure and arrival stations along with travel schedule.",
 	"form_section_train": "Train",
 	"form_section_options": "Options",
+	"form_section_options_subtitle": "Configure check-in visibility and travel purpose.",
 
 	"form_departure_station": "Departure Station",
 	"form_arrival_station": "Arrival Station",

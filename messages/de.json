@@ -6,10 +6,12 @@
 	"nav_settings": "Einstellungen",
 	"nav_clear_inputs": "Alle Eingaben l\u00f6schen",
 	"nav_map_title": "Streckenkarte",
+	"nav_map_subtitle": "Interaktive Ansicht von Start- und Zielbahnhof sowie der Reiseroute.",
 	"nav_map_placeholder": "Karte erscheint, wenn beide Bahnhofskoordinaten ermittelt sind",
 	"station_use_current_location": "Aktuellen Standort verwenden",
 
 	"scanner_title": "OCR-Ticket-Scanner",
+	"scanner_subtitle": "Lade ein Ticket-Foto hoch, um Zug- und Bahnhofsdetails automatisch zu erfassen.",
 	"scanner_scanning": "Ticket wird mit Gemini KI gescannt\u2026",
 	"scanner_success": "Ticket gescannt \u2014 Details unten pr\u00fcfen",
 	"scanner_click_upload": "Zum Hochladen klicken",
@@ -20,9 +22,12 @@
 	"scanner_error_no_key": "Bitte zuerst deinen Gemini API-Schl\u00fcssel in den Einstellungen eintragen.",
 
 	"form_journey_details": "Reisedetails",
+	"form_journey_details_subtitle": "Überprüfe und konfiguriere deine Reisedetails vor dem Check-in bei Träwelling.",
 	"form_section_route": "Route",
+	"form_section_route_subtitle": "Wähle Start- und Zielbahnhof sowie die Reisedaten aus.",
 	"form_section_train": "Zug",
 	"form_section_options": "Optionen",
+	"form_section_options_subtitle": "Konfiguriere die Sichtbarkeit des Check-ins und den Reisezweck.",
 
 	"form_departure_station": "Abfahrtsbahnhof",
 	"form_arrival_station": "Ankunftsbahnhof",

@@ -6,10 +6,12 @@
 	"nav_settings": "Ajustes",
 	"nav_clear_inputs": "Borrar todos los campos",
 	"nav_map_title": "Mapa de la ruta",
+	"nav_map_subtitle": "Vista interactiva de las estaciones de salida y llegada y la ruta del viaje.",
 	"nav_map_placeholder": "El mapa aparecerá cuando se resuelvan las coordenadas de ambas estaciones",
 	"station_use_current_location": "Usar ubicación actual",
 
 	"scanner_title": "Escáner OCR de Billetes",
+	"scanner_subtitle": "Sube una foto del billete para extraer automáticamente los detalles del tren y las estaciones.",
 	"scanner_scanning": "Escaneando billete con Gemini IA\u2026",
 	"scanner_success": "Billete escaneado \u2014 revisa los detalles abajo",
 	"scanner_click_upload": "Haz clic para subir",
@@ -20,9 +22,12 @@
 	"scanner_error_no_key": "Primero configura tu clave API de Gemini en Ajustes.",
 
 	"form_journey_details": "Detalles del viaje",
+	"form_journey_details_subtitle": "Revisa y configura los detalles del viaje antes de hacer check-in en Träwelling.",
 	"form_section_route": "Ruta",
+	"form_section_route_subtitle": "Selecciona las estaciones de salida y llegada junto con el horario del viaje.",
 	"form_section_train": "Tren",
 	"form_section_options": "Opciones",
+	"form_section_options_subtitle": "Configura la visibilidad del check-in y el motivo del viaje.",
 
 	"form_departure_station": "Estación de salida",
 	"form_arrival_station": "Estación de llegada",
