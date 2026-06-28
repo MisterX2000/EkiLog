@@ -91,7 +91,6 @@
 </script>
 
 <div class="mx-auto flex max-w-4xl flex-col gap-5 px-1">
-
 	<!-- Träwelling Token -->
 	<section class="card card-border bg-base-100 shadow-sm">
 		<div class="card-body gap-5">
@@ -104,15 +103,17 @@
 				<div class="flex-1">
 					<div class="flex items-center gap-2">
 						<h2 class="card-title text-base">{m.settings_traewelling_token()}</h2>
-						<a
-							href="https://traewelling.de/settings/applications"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="btn btn-ghost btn-xs btn-square"
-							title={m.settings_open_traewelling_link()}
-						>
-							<ExternalLink class="h-3.5 w-3.5" />
-						</a>
+						<div class="tooltip" data-tip={m.settings_open_traewelling_link()}>
+							<a
+								href="https://traewelling.de/settings/applications"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={m.settings_open_traewelling_link()}
+								class="btn btn-ghost btn-xs btn-square"
+							>
+								<ExternalLink class="h-3.5 w-3.5" />
+							</a>
+						</div>
 					</div>
 					<p class="text-sm text-base-content/60">{m.settings_token_placeholder()}</p>
 				</div>
@@ -176,15 +177,17 @@
 				<div class="flex-1">
 					<div class="flex items-center gap-2">
 						<h2 class="card-title text-base">{m.settings_gemini_key()}</h2>
-						<a
-							href="https://aistudio.google.com/api-keys"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="btn btn-ghost btn-xs btn-square"
-							title={m.settings_open_gemini_link()}
-						>
-							<ExternalLink class="h-3.5 w-3.5" />
-						</a>
+						<div class="tooltip" data-tip={m.settings_open_gemini_link()}>
+							<a
+								href="https://aistudio.google.com/api-keys"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={m.settings_open_gemini_link()}
+								class="btn btn-ghost btn-xs btn-square"
+							>
+								<ExternalLink class="h-3.5 w-3.5" />
+							</a>
+						</div>
 					</div>
 					<p class="text-sm text-base-content/60">{m.settings_gemini_description()}</p>
 				</div>

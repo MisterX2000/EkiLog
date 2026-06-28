@@ -174,19 +174,24 @@
 		{#if searchLoading}
 			<span class="loading loading-spinner loading-xs text-primary"></span>
 		{:else}
-			<button
-				type="button"
-				onclick={geoLocate}
-				disabled={geoLoading}
-				title={m.station_use_current_location()}
-				class="btn btn-ghost btn-xs btn-square"
+			<div
+				class="tooltip tooltip-left flex items-center"
+				data-tip={m.station_use_current_location()}
 			>
-				{#if geoLoading}
-					<span class="loading loading-spinner loading-xs"></span>
-				{:else}
-					<Navigation class="h-3.5 w-3.5" />
-				{/if}
-			</button>
+				<button
+					type="button"
+					onclick={geoLocate}
+					disabled={geoLoading}
+					aria-label={m.station_use_current_location()}
+					class="btn btn-ghost btn-xs btn-square"
+				>
+					{#if geoLoading}
+						<span class="loading loading-spinner loading-xs"></span>
+					{:else}
+						<Navigation class="h-3.5 w-3.5" />
+					{/if}
+				</button>
+			</div>
 		{/if}
 	</div>
 
