@@ -105,6 +105,7 @@
 	"settings_gemini_description": "Required for OCR ticket scanning. Your key is stored only in your browser.",
 	"settings_save_key": "Save Key",
 	"settings_gemini_saved": "Gemini API key saved",
+	"settings_gemini_connected": "Connected (Model: {model})",
 	"settings_station_db": "Japanese Station Database",
 	"settings_station_description": "Downloads the open-data JP railway stations dataset into your browser\u2019s IndexedDB for offline autocomplete and geolocation matching.",
 	"settings_stations_cached": "{count} stations cached",

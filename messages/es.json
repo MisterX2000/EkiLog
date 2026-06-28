@@ -105,6 +105,7 @@
 	"settings_gemini_description": "Necesaria para el escaneo OCR de billetes. Tu clave se almacena solo en tu navegador.",
 	"settings_save_key": "Guardar clave",
 	"settings_gemini_saved": "Clave API de Gemini guardada",
+	"settings_gemini_connected": "Conectado (Modelo: {model})",
 	"settings_station_db": "Base de datos de estaciones japonesas",
 	"settings_station_description": "Descarga el conjunto de datos de estaciones ferroviarias japonesas en la IndexedDB de tu navegador para autocompletado sin conexión y correspondencia de geolocalización.",
 	"settings_stations_cached": "{count} estaciones almacenadas",

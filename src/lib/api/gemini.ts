@@ -138,3 +138,20 @@ export async function parseTicketImage(
 		throw new Error(`Gemini returned unparseable response: ${text.slice(0, 200)}`);
 	}
 }
+
+export async function verifyGeminiKey(apiKey: string): Promise<string> {
+	const ai = new GoogleGenAI({ apiKey });
+	try {
+		const model = await ai.models.get({ model: MODEL });
+		return model.displayName || model.name || MODEL;
+	} catch (err: unknown) {
+		const msg = err instanceof Error ? err.message : String(err);
+		if (msg.includes('429') || msg.toLowerCase().includes('quota')) {
+			throw new GeminiError(429, 'Gemini API quota exhausted. Try again later.');
+		}
+		if (msg.includes('403') || msg.toLowerCase().includes('api key')) {
+			throw new GeminiError(403, 'Invalid or unauthorized Gemini API key.');
+		}
+		throw new GeminiError(0, msg);
+	}
+}

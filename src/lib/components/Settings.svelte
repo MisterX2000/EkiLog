@@ -14,22 +14,26 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import { config } from '$lib/stores/config.svelte';
 	import { getAuthUser, TraewellingError } from '$lib/api/traewelling';
+	import { verifyGeminiKey, GeminiError } from '$lib/api/gemini';
 	import { syncStations, getLastSyncDate, getStationCount } from '$lib/db/stations';
 
 	// --- Träwelling token ---
 	let tokenInput = $state(config.traewellingToken);
-	let tokenStatus = $state<'idle' | 'checking' | 'ok' | 'error'>('idle');
-	let tokenUser = $state('');
+	let tokenStatus = $state<'idle' | 'checking' | 'ok' | 'error'>(
+		config.traewellingToken && config.traewellingUser ? 'ok' : 'idle'
+	);
+	let tokenUser = $state(config.traewellingUser);
 	let tokenError = $state('');
 
 	async function verifyToken() {
 		if (!tokenInput.trim()) return;
-		config.traewellingToken = tokenInput.trim();
 		tokenStatus = 'checking';
 		tokenError = '';
 		try {
-			const user = await getAuthUser(config.traewellingToken);
+			const user = await getAuthUser(tokenInput.trim());
 			tokenUser = user.displayName || user.username;
+			config.traewellingToken = tokenInput.trim();
+			config.traewellingUser = tokenUser;
 			tokenStatus = 'ok';
 		} catch (e) {
 			tokenStatus = 'error';
@@ -40,20 +44,48 @@
 	function clearToken() {
 		tokenInput = '';
 		config.traewellingToken = '';
+		config.traewellingUser = '';
 		tokenStatus = 'idle';
 		tokenUser = '';
+		tokenError = '';
 	}
 
 	// --- Gemini key ---
 	let geminiInput = $state(config.geminiApiKey);
+	let geminiStatus = $state<'idle' | 'checking' | 'ok' | 'error'>(
+		config.geminiApiKey && config.geminiModelInfo ? 'ok' : 'idle'
+	);
+	let geminiModel = $state(config.geminiModelInfo);
+	let geminiError = $state('');
 
-	function saveGeminiKey() {
-		config.geminiApiKey = geminiInput.trim();
+	async function verifyGemini() {
+		if (!geminiInput.trim()) return;
+		geminiStatus = 'checking';
+		geminiError = '';
+		try {
+			const modelInfo = await verifyGeminiKey(geminiInput.trim());
+			geminiModel = modelInfo;
+			config.geminiApiKey = geminiInput.trim();
+			config.geminiModelInfo = geminiModel;
+			geminiStatus = 'ok';
+		} catch (e) {
+			geminiStatus = 'error';
+			geminiError =
+				e instanceof GeminiError
+					? `HTTP ${e.status}: ${e.message}`
+					: e instanceof Error
+						? e.message
+						: String(e);
+		}
 	}
 
 	function clearGemini() {
 		geminiInput = '';
 		config.geminiApiKey = '';
+		config.geminiModelInfo = '';
+		geminiStatus = 'idle';
+		geminiModel = '';
+		geminiError = '';
 	}
 
 	// --- Station sync ---
@@ -103,7 +135,7 @@
 				<div class="flex-1">
 					<div class="flex items-center gap-2">
 						<h2 class="card-title text-base">{m.settings_traewelling_token()}</h2>
-						<div class="tooltip" data-tip={m.settings_open_traewelling_link()}>
+						<div class="tooltip tooltip-right" data-tip={m.settings_open_traewelling_link()}>
 							<a
 								href="https://traewelling.de/settings/applications"
 								target="_blank"
@@ -129,39 +161,41 @@
 				/>
 			</fieldset>
 
-			<div class="flex flex-col gap-2 sm:flex-row">
-				<button
-					onclick={verifyToken}
-					disabled={tokenStatus === 'checking' || !tokenInput.trim()}
-					class="btn btn-primary"
-				>
-					{#if tokenStatus === 'checking'}
-						<span class="loading loading-spinner loading-sm"></span>
-						{m.settings_checking()}
-					{:else}
-						<CircleCheck class="h-4 w-4" />
-						{m.settings_verify_save()}
-					{/if}
-				</button>
-				{#if config.traewellingToken}
-					<button onclick={clearToken} class="btn btn-ghost">
-						<CircleX class="h-4 w-4" />
-						{m.settings_clear()}
+			<div class="flex flex-wrap items-center gap-3">
+				<div class="flex flex-wrap gap-2">
+					<button
+						onclick={verifyToken}
+						disabled={tokenStatus === 'checking' || !tokenInput.trim()}
+						class="btn btn-primary"
+					>
+						{#if tokenStatus === 'checking'}
+							<span class="loading loading-spinner loading-sm"></span>
+							{m.settings_checking()}
+						{:else}
+							<CircleCheck class="h-4 w-4" />
+							{m.settings_verify_save()}
+						{/if}
 					</button>
+					{#if config.traewellingToken}
+						<button onclick={clearToken} class="btn btn-ghost">
+							<CircleX class="h-4 w-4" />
+							{m.settings_clear()}
+						</button>
+					{/if}
+				</div>
+
+				{#if tokenStatus === 'ok'}
+					<div role="alert" class="alert alert-success alert-soft my-0 min-w-90 flex-1 py-2.5">
+						<CircleCheck class="h-4 w-4 shrink-0" />
+						<span>{m.settings_connected_as({ name: tokenUser })}</span>
+					</div>
+				{:else if tokenStatus === 'error'}
+					<div role="alert" class="alert alert-error alert-soft my-0 min-w-90 flex-1 py-2.5">
+						<CircleX class="h-4 w-4 shrink-0" />
+						<span>{tokenError}</span>
+					</div>
 				{/if}
 			</div>
-
-			{#if tokenStatus === 'ok'}
-				<div role="alert" class="alert alert-success alert-soft">
-					<CircleCheck class="h-4 w-4" />
-					<span>{m.settings_connected_as({ name: tokenUser })}</span>
-				</div>
-			{:else if tokenStatus === 'error'}
-				<div role="alert" class="alert alert-error alert-soft">
-					<CircleX class="h-4 w-4" />
-					<span>{tokenError}</span>
-				</div>
-			{/if}
 		</div>
 	</section>
 
@@ -177,7 +211,7 @@
 				<div class="flex-1">
 					<div class="flex items-center gap-2">
 						<h2 class="card-title text-base">{m.settings_gemini_key()}</h2>
-						<div class="tooltip" data-tip={m.settings_open_gemini_link()}>
+						<div class="tooltip tooltip-right" data-tip={m.settings_open_gemini_link()}>
 							<a
 								href="https://aistudio.google.com/api-keys"
 								target="_blank"
@@ -198,25 +232,41 @@
 				<input type="password" placeholder="AIza…" bind:value={geminiInput} class="input w-full" />
 			</fieldset>
 
-			<div class="flex flex-col gap-2 sm:flex-row">
-				<button onclick={saveGeminiKey} disabled={!geminiInput.trim()} class="btn btn-primary">
-					<CircleCheck class="h-4 w-4" />
-					{m.settings_save_key()}
-				</button>
-				{#if config.geminiApiKey}
-					<button onclick={clearGemini} class="btn btn-ghost">
-						<CircleX class="h-4 w-4" />
-						{m.settings_clear()}
+			<div class="flex flex-wrap items-center gap-3">
+				<div class="flex flex-wrap gap-2">
+					<button
+						onclick={verifyGemini}
+						disabled={geminiStatus === 'checking' || !geminiInput.trim()}
+						class="btn btn-primary"
+					>
+						{#if geminiStatus === 'checking'}
+							<span class="loading loading-spinner loading-sm"></span>
+							{m.settings_checking()}
+						{:else}
+							<CircleCheck class="h-4 w-4" />
+							{m.settings_verify_save()}
+						{/if}
 					</button>
+					{#if config.geminiApiKey}
+						<button onclick={clearGemini} class="btn btn-ghost">
+							<CircleX class="h-4 w-4" />
+							{m.settings_clear()}
+						</button>
+					{/if}
+				</div>
+
+				{#if geminiStatus === 'ok'}
+					<div role="alert" class="alert alert-success alert-soft my-0 min-w-90 flex-1 py-2.5">
+						<CircleCheck class="h-4 w-4 shrink-0" />
+						<span>{m.settings_gemini_connected({ model: geminiModel })}</span>
+					</div>
+				{:else if geminiStatus === 'error'}
+					<div role="alert" class="alert alert-error alert-soft my-0 min-w-90 flex-1 py-2.5">
+						<CircleX class="h-4 w-4 shrink-0" />
+						<span>{geminiError}</span>
+					</div>
 				{/if}
 			</div>
-
-			{#if config.geminiApiKey}
-				<div role="alert" class="alert alert-success alert-soft">
-					<CircleCheck class="h-4 w-4" />
-					<span>{m.settings_gemini_saved()}</span>
-				</div>
-			{/if}
 		</div>
 	</section>
 

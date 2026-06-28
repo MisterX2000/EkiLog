@@ -105,6 +105,7 @@
 	"settings_gemini_description": "F\u00fcr den OCR-Ticket-Scan erforderlich. Dein Schl\u00fcssel wird nur in deinem Browser gespeichert.",
 	"settings_save_key": "Schl\u00fcssel speichern",
 	"settings_gemini_saved": "Gemini API-Schl\u00fcssel gespeichert",
+	"settings_gemini_connected": "Verbunden (Modell: {model})",
 	"settings_station_db": "Japanische Bahnhofsdatenbank",
 	"settings_station_description": "L\u00e4dt den Open-Data-Datensatz japanischer Bahnh\u00f6fe in die IndexedDB deines Browsers f\u00fcr Offline-Autovervollst\u00e4ndigung und Geolokalisierung.",
 	"settings_stations_cached": "{count} Bahnh\u00f6fe gespeichert",

@@ -105,6 +105,7 @@
 	"settings_gemini_description": "OCRチケットスキャンに必要です。キーはブラウザにのみ保存されます。",
 	"settings_save_key": "キーを保存",
 	"settings_gemini_saved": "Gemini APIキーを保存しました",
+	"settings_gemini_connected": "接続済み (モデル: {model})",
 	"settings_station_db": "日本の駅データベース",
 	"settings_station_description": "オフラインの自動補完と位置情報照合のために、日本の鉄道駅のオープンデータをブラウザのIndexedDBにダウンロードします。",
 	"settings_stations_cached": "{count}駅を保存済み",

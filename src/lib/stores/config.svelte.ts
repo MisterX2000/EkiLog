@@ -25,7 +25,9 @@ function persist<T>(key: string, value: T): void {
 
 function createConfigStore() {
 	let traewellingToken = $state<string>(loadFromStorage('ekilog.traewellingToken', ''));
+	let traewellingUser = $state<string>(loadFromStorage('ekilog.traewellingUser', ''));
 	let geminiApiKey = $state<string>(loadFromStorage('ekilog.geminiApiKey', ''));
+	let geminiModelInfo = $state<string>(loadFromStorage('ekilog.geminiModelInfo', ''));
 	let defaultVisibility = $state<number>(loadFromStorage('ekilog.defaultVisibility', 0));
 	let defaultBusiness = $state<number>(loadFromStorage('ekilog.defaultBusiness', 0));
 
@@ -37,12 +39,26 @@ function createConfigStore() {
 			traewellingToken = v;
 			persist('ekilog.traewellingToken', v);
 		},
+		get traewellingUser() {
+			return traewellingUser;
+		},
+		set traewellingUser(v: string) {
+			traewellingUser = v;
+			persist('ekilog.traewellingUser', v);
+		},
 		get geminiApiKey() {
 			return geminiApiKey;
 		},
 		set geminiApiKey(v: string) {
 			geminiApiKey = v;
 			persist('ekilog.geminiApiKey', v);
+		},
+		get geminiModelInfo() {
+			return geminiModelInfo;
+		},
+		set geminiModelInfo(v: string) {
+			geminiModelInfo = v;
+			persist('ekilog.geminiModelInfo', v);
 		},
 		get defaultVisibility() {
 			return defaultVisibility;
