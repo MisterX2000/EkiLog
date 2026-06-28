@@ -2,6 +2,8 @@
 	import { onMount, onDestroy } from 'svelte';
 	import L, { Map as LeafletMap, Marker, Polyline } from 'leaflet';
 	import 'leaflet/dist/leaflet.css';
+	import { m } from '$lib/paraglide/messages.js';
+	import { TrainFront, MapPin } from '@lucide/svelte';
 
 	interface Props {
 		depLat: number | null;
@@ -22,6 +24,8 @@
 	}: Props = $props();
 
 	let mapEl: HTMLDivElement;
+	let depTemplate: HTMLDivElement;
+	let arrTemplate: HTMLDivElement;
 	let leafletMap: LeafletMap | null = null;
 	let depMarker: Marker | null = null;
 	let arrMarker: Marker | null = null;
@@ -81,29 +85,41 @@
 		arrowMarker?.remove();
 
 		if (depLat !== null && depLon !== null) {
+			const el = depTemplate?.cloneNode(true) as HTMLElement;
+			if (el) el.classList.remove('hidden');
 			depMarker = L.marker([depLat, depLon], {
 				icon: L.divIcon({
-					html: `<div class="flex h-7 w-7 items-center justify-center rounded-full bg-indigo-600 text-white text-xs font-bold shadow-lg border-2 border-white">D</div>`,
-					iconSize: [28, 28],
-					iconAnchor: [14, 14],
+					html:
+						el ||
+						`<div class="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg shadow-indigo-500/30 border-2 border-white"></div>`,
+					iconSize: [32, 32],
+					iconAnchor: [16, 16],
 					className: ''
 				})
 			})
 				.addTo(leafletMap)
-				.bindPopup(`<b>${depName}</b><br>Departure`);
+				.bindPopup(
+					`<b>${depName}</b><br><span style="font-size: 0.85em; color: #666;">${m.form_departure()}</span>`
+				);
 		}
 
 		if (arrLat !== null && arrLon !== null) {
+			const el = arrTemplate?.cloneNode(true) as HTMLElement;
+			if (el) el.classList.remove('hidden');
 			arrMarker = L.marker([arrLat, arrLon], {
 				icon: L.divIcon({
-					html: `<div class="flex h-7 w-7 items-center justify-center rounded-full bg-rose-600 text-white text-xs font-bold shadow-lg border-2 border-white">A</div>`,
-					iconSize: [28, 28],
-					iconAnchor: [14, 14],
+					html:
+						el ||
+						`<div class="flex h-8 w-8 items-center justify-center rounded-full bg-rose-600 text-white shadow-lg shadow-rose-500/30 border-2 border-white"></div>`,
+					iconSize: [32, 32],
+					iconAnchor: [16, 16],
 					className: ''
 				})
 			})
 				.addTo(leafletMap)
-				.bindPopup(`<b>${arrName}</b><br>Arrival`);
+				.bindPopup(
+					`<b>${arrName}</b><br><span style="font-size: 0.85em; color: #666;">${m.form_arrival()}</span>`
+				);
 		}
 
 		if (depLat !== null && depLon !== null && arrLat !== null && arrLon !== null) {
@@ -162,6 +178,21 @@
 </script>
 
 <div bind:this={mapEl} class="h-full w-full rounded-2xl"></div>
+
+<div class="hidden">
+	<div
+		bind:this={depTemplate}
+		class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-indigo-600 text-white shadow-lg shadow-indigo-500/30"
+	>
+		<TrainFront class="h-4.5 w-4.5" />
+	</div>
+	<div
+		bind:this={arrTemplate}
+		class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-rose-600 text-white shadow-lg shadow-rose-500/30"
+	>
+		<MapPin class="h-4.5 w-4.5" />
+	</div>
+</div>
 
 <style>
 	:global(.flowing-route-line) {
