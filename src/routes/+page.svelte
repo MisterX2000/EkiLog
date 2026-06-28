@@ -48,10 +48,10 @@
 			class="navbar rounded-box border border-base-300 bg-base-100/90 px-4 shadow-sm backdrop-blur"
 		>
 			<div class="navbar-start gap-3">
-				<div
-					class="flex h-11 w-11 items-center justify-center rounded-box bg-primary/12 text-primary"
-				>
-					<TrainFront class="h-6 w-6" />
+				<div class="avatar avatar-placeholder">
+					<div class="w-11 rounded-box bg-primary/14 text-primary">
+						<TrainFront class="h-6 w-6" />
+					</div>
 				</div>
 				<div>
 					<p class="text-xs font-semibold uppercase tracking-[0.24em] text-base-content/50">
@@ -104,10 +104,10 @@
 					<section class="card card-border bg-base-100 shadow-sm">
 						<div class="card-body gap-4">
 							<div class="flex items-center gap-3">
-								<div
-									class="flex h-10 w-10 items-center justify-center rounded-box bg-secondary/14 text-secondary"
-								>
-									<ScanLine class="h-5 w-5" />
+								<div class="avatar avatar-placeholder">
+									<div class="w-10 rounded-full bg-secondary/14 text-secondary">
+										<ScanLine class="h-5 w-5" />
+									</div>
 								</div>
 								<div>
 									<h2 class="card-title text-base">{m.scanner_title()}</h2>
@@ -122,10 +122,10 @@
 						<div class="card-body gap-4">
 							<div class="flex items-start justify-between gap-4">
 								<div class="flex items-center gap-3">
-									<div
-										class="flex h-10 w-10 items-center justify-center rounded-box bg-primary/12 text-primary"
-									>
-										<MapIcon class="h-5 w-5" />
+									<div class="avatar avatar-placeholder">
+										<div class="w-10 rounded-full bg-primary/14 text-primary">
+											<MapIcon class="h-5 w-5" />
+										</div>
 									</div>
 									<div>
 										<h2 class="card-title text-base">{m.form_journey_details()}</h2>
@@ -160,10 +160,10 @@
 							>
 								<div class="card-body gap-4">
 									<div class="flex items-center gap-3">
-										<div
-											class="flex h-10 w-10 items-center justify-center rounded-box bg-accent/18 text-base-content"
-										>
-											<MapPinned class="h-5 w-5" />
+										<div class="avatar avatar-placeholder">
+											<div class="w-10 rounded-full bg-accent/14 text-base-content">
+												<MapPinned class="h-5 w-5" />
+											</div>
 										</div>
 										<div>
 											<h2 class="card-title text-base">{m.nav_map_title()}</h2>

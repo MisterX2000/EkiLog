@@ -19,7 +19,9 @@
 		ExternalLink,
 		Plus,
 		Route,
-		Settings2
+		Settings2,
+		InfoIcon,
+		RefreshCw
 	} from '@lucide/svelte';
 	import { config } from '$lib/stores/config.svelte';
 	import { journey } from '$lib/stores/journey.svelte';
@@ -403,10 +405,10 @@
 			class="card border border-success/30 bg-success/10 shadow-sm"
 		>
 			<div class="card-body items-center gap-4 text-center">
-				<div
-					class="flex h-16 w-16 items-center justify-center rounded-full bg-success/18 text-success"
-				>
-					<CircleCheckBig class="h-9 w-9" />
+				<div class="avatar avatar-placeholder">
+					<div class="w-16 rounded-full bg-success/14 text-success">
+						<CircleCheckBig class="h-9 w-9" />
+					</div>
 				</div>
 				<div class="space-y-1">
 					<h3 class="text-lg font-semibold">{m.form_checked_in_title()}</h3>
@@ -434,10 +436,10 @@
 		<section class="card card-border bg-base-200/50 shadow-sm">
 			<div class="card-body gap-5">
 				<div class="flex items-start gap-3">
-					<div
-						class="flex h-10 w-10 items-center justify-center rounded-box bg-primary/12 text-primary"
-					>
-						<Route class="h-5 w-5" />
+					<div class="avatar avatar-placeholder">
+						<div class="w-10 rounded-full bg-primary/14 text-primary">
+							<Route class="h-5 w-5" />
+						</div>
 					</div>
 					<div class="space-y-1">
 						<h3 class="card-title text-base">{m.form_section_route()}</h3>
@@ -516,10 +518,10 @@
 		<section class="card card-border bg-base-100 shadow-sm">
 			<div class="card-body gap-5">
 				<div class="flex items-start gap-3">
-					<div
-						class="flex h-10 w-10 items-center justify-center rounded-box bg-secondary/14 text-secondary"
-					>
-						<TrainFront class="h-5 w-5" />
+					<div class="avatar avatar-placeholder">
+						<div class="w-10 rounded-full bg-secondary/14 text-secondary">
+							<TrainFront class="h-5 w-5" />
+						</div>
 					</div>
 					<div class="space-y-1">
 						<h3 class="card-title text-base">{m.form_section_train()}</h3>
@@ -595,10 +597,10 @@
 		<section class="card card-border bg-base-100 shadow-sm">
 			<div class="card-body gap-5">
 				<div class="flex items-start gap-3">
-					<div
-						class="flex h-10 w-10 items-center justify-center rounded-box bg-accent/18 text-base-content"
-					>
-						<Settings2 class="h-5 w-5" />
+					<div class="avatar avatar-placeholder">
+						<div class="w-10 rounded-full bg-accent/14 text-accent">
+							<Settings2 class="h-5 w-5" />
+						</div>
 					</div>
 					<div class="space-y-1">
 						<h3 class="card-title text-base">{m.form_section_options()}</h3>
@@ -640,21 +642,38 @@
 			<div class="card-body gap-5">
 				<div class="flex items-start justify-between gap-4">
 					<div class="flex items-start gap-3">
-						<div
-							class="flex h-10 w-10 items-center justify-center rounded-box bg-info/14 text-info"
-						>
-							<Search class="h-5 w-5" />
+						<div class="avatar avatar-placeholder">
+							<div class="w-10 rounded-full bg-info/14 text-info">
+								<Search class="h-5 w-5" />
+							</div>
 						</div>
 						<div class="space-y-1">
 							<h3 class="card-title text-base">{m.form_trip_lookup_title()}</h3>
 							<p class="text-sm text-base-content/60">{m.form_lookup_hint()}</p>
 						</div>
 					</div>
-					{#if tripLookupStatus === 'found' && foundDeparture}
-						<span class="badge badge-success badge-soft">{m.form_trip_matched()}</span>
-					{:else if manualTripStatus === 'created'}
-						<span class="badge badge-info badge-soft">{m.form_manual_trip_created()}</span>
-					{/if}
+					<div class="flex items-center gap-2">
+						{#if tripLookupStatus === 'found' && foundDeparture}
+							<span class="badge badge-success badge-soft">{m.form_trip_matched()}</span>
+						{:else if manualTripStatus === 'created'}
+							<span class="badge badge-info badge-soft">{m.form_manual_trip_created()}</span>
+						{/if}
+						<div class="tooltip tooltip-left" data-tip={m.form_retry_search()}>
+							<button
+								type="button"
+								onclick={() => {
+									resetTripLookup();
+								}}
+								disabled={tripLookupStatus === 'idle' ||
+									tripLookupStatus === 'loading' ||
+									!config.traewellingToken}
+								aria-label={m.form_retry_search()}
+								class="btn btn-ghost btn-sm btn-square"
+							>
+								<RefreshCw class="h-4 w-4 {tripLookupStatus === 'loading' ? 'animate-spin' : ''}" />
+							</button>
+						</div>
+					</div>
 				</div>
 
 				{#if tripLookupStatus === 'found' && foundDeparture}
@@ -738,24 +757,15 @@
 
 				{#if manualTripStatus !== 'created'}
 					{#if tripLookupStatus === 'idle'}
-						<p class="text-sm text-base-content/55">{m.form_autosearch_hint()}</p>
+						<div role="alert" class="alert alert-info alert-soft">
+							<InfoIcon class="h-4 w-4" />
+							<span>{m.form_autosearch_hint()}</span>
+						</div>
 					{:else if tripLookupStatus === 'loading'}
 						<div class="flex items-center gap-2 text-sm text-base-content/60">
 							<span class="loading loading-spinner loading-sm text-primary"></span>
 							<span>{m.form_searching()}</span>
 						</div>
-					{:else}
-						<button
-							type="button"
-							onclick={() => {
-								resetTripLookup();
-							}}
-							disabled={!config.traewellingToken}
-							class="btn btn-ghost btn-sm w-fit"
-						>
-							<Search class="h-4 w-4" />
-							{m.form_retry_search()}
-						</button>
 					{/if}
 				{/if}
 
@@ -765,14 +775,14 @@
 						class="rounded-box border border-base-300 bg-base-100 p-4"
 					>
 						<div class="mb-4 flex items-start gap-3">
-							<div
-								class="flex h-10 w-10 items-center justify-center rounded-box bg-info/14 text-info"
-							>
-								<MapPlus class="h-5 w-5" />
+							<div class="avatar avatar-placeholder">
+								<div class="w-10 rounded-full bg-info/14 text-info">
+									<MapPlus class="h-5 w-5" />
+								</div>
 							</div>
 							<div class="space-y-1">
 								<h4 class="font-semibold">{m.form_create_manual_trip_heading()}</h4>
-								<p class="text-sm text-base-content/60">{m.form_create_manual_trip_btn()}</p>
+								<p class="text-sm text-base-content/60">{m.form_create_manual_trip_subtitle()}</p>
 							</div>
 						</div>
 

@@ -67,6 +67,7 @@
 	"form_retry_search": "Suche wiederholen",
 
 	"form_create_manual_trip_heading": "Manuelle Fahrt erstellen",
+	"form_create_manual_trip_subtitle": "Gib die Fahrtangaben manuell ein, falls deine Bahn nicht in den Live-Abfahrtsdaten zu finden ist.",
 	"form_category": "Kategorie",
 	"form_line_name": "Linienname",
 	"form_journey_number": "Fahrtsnummer",

@@ -67,6 +67,7 @@
 	"form_retry_search": "Retry search",
 
 	"form_create_manual_trip_heading": "Create Manual Trip",
+	"form_create_manual_trip_subtitle": "Enter trip details manually if your train cannot be found in the live departure data.",
 	"form_category": "Category",
 	"form_line_name": "Line Name",
 	"form_journey_number": "Journey Number",

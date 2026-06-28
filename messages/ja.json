@@ -67,6 +67,7 @@
 	"form_retry_search": "再検索",
 
 	"form_create_manual_trip_heading": "手動乗車を作成",
+	"form_create_manual_trip_subtitle": "ライブ出発データに電車が見つからない場合は、手動で詳細を入力してください。",
 	"form_category": "カテゴリ",
 	"form_line_name": "路線名",
 	"form_journey_number": "乗車番号",

@@ -127,10 +127,10 @@
 	<section class="card card-border bg-base-100 shadow-sm">
 		<div class="card-body gap-5">
 			<div class="flex items-start gap-3">
-				<div
-					class="flex h-10 w-10 items-center justify-center rounded-box bg-primary/12 text-primary"
-				>
-					<KeyRound class="h-5 w-5" />
+				<div class="avatar avatar-placeholder">
+					<div class="w-10 rounded-full bg-primary/14 text-primary">
+						<KeyRound class="h-5 w-5" />
+					</div>
 				</div>
 				<div class="flex-1">
 					<div class="flex items-center gap-2">
@@ -203,10 +203,10 @@
 	<section class="card card-border bg-base-100 shadow-sm">
 		<div class="card-body gap-5">
 			<div class="flex items-start gap-3">
-				<div
-					class="flex h-10 w-10 items-center justify-center rounded-box bg-secondary/14 text-secondary"
-				>
-					<KeyRound class="h-5 w-5" />
+				<div class="avatar avatar-placeholder">
+					<div class="w-10 rounded-full bg-secondary/14 text-secondary">
+						<KeyRound class="h-5 w-5" />
+					</div>
 				</div>
 				<div class="flex-1">
 					<div class="flex items-center gap-2">
@@ -274,10 +274,10 @@
 	<section class="card card-border bg-base-100 shadow-sm">
 		<div class="card-body gap-5">
 			<div class="flex items-start gap-3">
-				<div
-					class="flex h-10 w-10 items-center justify-center rounded-box bg-success/14 text-success"
-				>
-					<Database class="h-5 w-5" />
+				<div class="avatar avatar-placeholder">
+					<div class="w-10 rounded-full bg-success/14 text-success">
+						<Database class="h-5 w-5" />
+					</div>
 				</div>
 				<div class="space-y-1">
 					<h2 class="card-title text-base">{m.settings_station_db()}</h2>
@@ -336,8 +336,10 @@
 	<section class="card card-border bg-base-100 shadow-sm">
 		<div class="card-body gap-5">
 			<div class="flex items-start gap-3">
-				<div class="flex h-10 w-10 items-center justify-center rounded-box bg-info/14 text-info">
-					<Settings2 class="h-5 w-5" />
+				<div class="avatar avatar-placeholder">
+					<div class="w-10 rounded-full bg-info/14 text-info">
+						<Settings2 class="h-5 w-5" />
+					</div>
 				</div>
 				<div class="space-y-1">
 					<h2 class="card-title text-base">{m.settings_checkin_defaults()}</h2>

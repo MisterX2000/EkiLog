@@ -67,6 +67,7 @@
 	"form_retry_search": "Relancer la recherche",
 
 	"form_create_manual_trip_heading": "Créer un trajet manuel",
+	"form_create_manual_trip_subtitle": "Saisissez manuellement les détails du trajet si votre train est introuvable dans les départs en direct.",
 	"form_category": "Catégorie",
 	"form_line_name": "Nom de ligne",
 	"form_journey_number": "Numéro de trajet",

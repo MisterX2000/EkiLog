@@ -67,6 +67,7 @@
 	"form_retry_search": "Reintentar búsqueda",
 
 	"form_create_manual_trip_heading": "Crear viaje manual",
+	"form_create_manual_trip_subtitle": "Introduce los detalles del viaje manualmente si tu tren no aparece en los datos de salida en directo.",
 	"form_category": "Categoría",
 	"form_line_name": "Nombre de línea",
 	"form_journey_number": "Número de viaje",
