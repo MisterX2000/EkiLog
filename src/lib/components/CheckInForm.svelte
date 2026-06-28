@@ -140,6 +140,8 @@
 		foundDeparture = dep;
 		tripLookupStatus = 'found';
 		showDepartureList = false;
+		manualTripStatus = 'idle';
+		manualTripId = '';
 	}
 
 	async function lookupTrip() {
@@ -336,6 +338,8 @@
 			return;
 		}
 
+		foundDeparture = null;
+		showDepartureList = false;
 		manualTripStatus = 'loading';
 		manualTripError = '';
 
@@ -653,11 +657,6 @@
 						</div>
 					</div>
 					<div class="flex items-center gap-2">
-						{#if tripLookupStatus === 'found' && foundDeparture}
-							<span class="badge badge-success badge-soft">{m.form_trip_matched()}</span>
-						{:else if manualTripStatus === 'created'}
-							<span class="badge badge-info badge-soft">{m.form_manual_trip_created()}</span>
-						{/if}
 						<div class="tooltip tooltip-left" data-tip={m.form_retry_search()}>
 							<button
 								type="button"
@@ -676,7 +675,15 @@
 					</div>
 				</div>
 
-				{#if tripLookupStatus === 'found' && foundDeparture}
+				{#if manualTripStatus === 'created'}
+					<div
+						in:fly={{ y: 4, duration: 200 }}
+						role="alert"
+						class="alert alert-info alert-soft sm:alert-horizontal"
+					>
+						<span class="font-semibold">{manualLineName}</span>
+					</div>
+				{:else if tripLookupStatus === 'found' && foundDeparture}
 					<div
 						in:fly={{ y: 4, duration: 200 }}
 						role="alert"
@@ -689,34 +696,6 @@
 							{/if}
 						</div>
 						<span class="badge badge-ghost">{formatTime(foundDeparture.plannedWhen)}</span>
-					</div>
-					{#if availableDepartures.length > 1}
-						<button
-							type="button"
-							onclick={() => (showDepartureList = !showDepartureList)}
-							class="btn btn-ghost btn-sm w-fit"
-						>
-							<ChevronDown class="h-4 w-4" />
-							{m.form_wrong_train()}
-						</button>
-					{/if}
-				{:else if manualTripStatus === 'created'}
-					<div
-						in:fly={{ y: 4, duration: 200 }}
-						role="alert"
-						class="alert alert-info alert-soft sm:alert-horizontal"
-					>
-						<span class="font-semibold">{manualLineName}</span>
-						<button
-							type="button"
-							onclick={() => {
-								manualTripStatus = 'idle';
-								manualTripId = '';
-							}}
-							class="btn btn-ghost btn-xs"
-						>
-							{m.form_reset()}
-						</button>
 					</div>
 				{:else if tripLookupStatus === 'not_found'}
 					<div role="alert" class="alert alert-warning alert-soft">
@@ -735,41 +714,27 @@
 					</div>
 				{/if}
 
-				{#if showDepartureList && availableDepartures.length > 0}
-					<ul
-						transition:slide={{ duration: 200 }}
-						class="menu rounded-box border border-base-300 bg-base-100"
-					>
-						{#each availableDepartures as dep (dep.tripId)}
-							<li>
-								<button
-									type="button"
-									class:menu-active={foundDeparture?.tripId === dep.tripId}
-									onclick={() => selectDeparture(dep)}
-								>
-									<span>{dep.line.name}{dep.direction ? ` → ${dep.direction}` : ''}</span>
-									<span class="badge badge-ghost badge-sm">{formatTime(dep.plannedWhen)}</span>
-								</button>
-							</li>
-						{/each}
-					</ul>
-				{/if}
-
-				{#if manualTripStatus !== 'created'}
-					{#if tripLookupStatus === 'idle'}
-						<div role="alert" class="alert alert-info alert-soft">
-							<InfoIcon class="h-4 w-4" />
-							<span>{m.form_autosearch_hint()}</span>
-						</div>
-					{:else if tripLookupStatus === 'loading'}
-						<div class="flex items-center gap-2 text-sm text-base-content/60">
-							<span class="loading loading-spinner loading-sm text-primary"></span>
-							<span>{m.form_searching()}</span>
-						</div>
+				{#snippet tripSelectionEntries()}
+					{#if availableDepartures.length > 0}
+						<ul
+							transition:slide={{ duration: 200 }}
+							class="menu rounded-box border border-base-300 bg-base-100"
+						>
+							{#each availableDepartures as dep (dep.tripId)}
+								<li>
+									<button
+										type="button"
+										class:menu-active={foundDeparture?.tripId === dep.tripId}
+										onclick={() => selectDeparture(dep)}
+									>
+										<span>{dep.line.name}{dep.direction ? ` → ${dep.direction}` : ''}</span>
+										<span class="badge badge-ghost badge-sm">{formatTime(dep.plannedWhen)}</span>
+									</button>
+								</li>
+							{/each}
+						</ul>
 					{/if}
-				{/if}
 
-				{#if (tripLookupStatus === 'no_departures' || tripLookupStatus === 'not_found' || tripLookupStatus === 'error') && manualTripStatus !== 'created'}
 					<div
 						transition:slide={{ duration: 250 }}
 						class="rounded-box border border-base-300 bg-base-100 p-4"
@@ -867,6 +832,36 @@
 							{/if}
 						</button>
 					</div>
+				{/snippet}
+
+				{#if tripReady}
+					<div class="collapse collapse-arrow">
+						<input type="checkbox" bind:checked={showDepartureList} />
+						<div class="collapse-title font-semibold pe-4 ps-12 after:start-5 after:end-auto">
+							{m.form_wrong_train()}
+						</div>
+						<div class="collapse-content space-y-4 text-sm">
+							{@render tripSelectionEntries()}
+						</div>
+					</div>
+				{:else}
+					{#if tripLookupStatus === 'idle'}
+						<div role="alert" class="alert alert-info alert-soft">
+							<InfoIcon class="h-4 w-4" />
+							<span>{m.form_autosearch_hint()}</span>
+						</div>
+					{:else if tripLookupStatus === 'loading'}
+						<div class="flex items-center gap-2 text-sm text-base-content/60">
+							<span class="loading loading-spinner loading-sm text-primary"></span>
+							<span>{m.form_searching()}</span>
+						</div>
+					{/if}
+
+					{#if tripLookupStatus === 'no_departures' || tripLookupStatus === 'not_found' || tripLookupStatus === 'error' || manualTripStatus === 'loading' || manualTripStatus === 'error'}
+						<div class="space-y-4">
+							{@render tripSelectionEntries()}
+						</div>
+					{/if}
 				{/if}
 			</div>
 		</section>
