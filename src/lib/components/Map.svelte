@@ -26,6 +26,35 @@
 	let depMarker: Marker | null = null;
 	let arrMarker: Marker | null = null;
 	let routeLine: Polyline | null = null;
+	let arrowMarker: Marker | null = null;
+
+	function getCurvedRoute(p1: [number, number], p2: [number, number]): [number, number][] {
+		const [lat1, lon1] = p1;
+		const [lat2, lon2] = p2;
+		const dx = lon2 - lon1;
+		const dy = lat2 - lat1;
+		const dist = Math.sqrt(dx * dx + dy * dy);
+
+		if (dist < 0.001) {
+			return [p1, p2];
+		}
+
+		const mx = (lon1 + lon2) / 2;
+		const my = (lat1 + lat2) / 2;
+		const k = 0.2;
+		const cx = mx - dy * k;
+		const cy = my + dx * k;
+
+		const points: [number, number][] = [];
+		const steps = 50;
+		for (let i = 0; i <= steps; i++) {
+			const t = i / steps;
+			const lat = (1 - t) * (1 - t) * lat1 + 2 * (1 - t) * t * cy + t * t * lat2;
+			const lon = (1 - t) * (1 - t) * lon1 + 2 * (1 - t) * t * cx + t * t * lon2;
+			points.push([lat, lon]);
+		}
+		return points;
+	}
 
 	onMount(() => {
 		leafletMap = L.map(mapEl).setView([36.5, 138], 5);
@@ -49,6 +78,7 @@
 		depMarker?.remove();
 		arrMarker?.remove();
 		routeLine?.remove();
+		arrowMarker?.remove();
 
 		if (depLat !== null && depLon !== null) {
 			depMarker = L.marker([depLat, depLon], {
@@ -77,13 +107,37 @@
 		}
 
 		if (depLat !== null && depLon !== null && arrLat !== null && arrLon !== null) {
-			routeLine = L.polyline(
-				[
-					[depLat, depLon],
-					[arrLat, arrLon]
-				],
-				{ color: '#6366f1', weight: 3, opacity: 0.8, dashArray: '6 4' }
-			).addTo(leafletMap);
+			const curvePoints = getCurvedRoute([depLat, depLon], [arrLat, arrLon]);
+			routeLine = L.polyline(curvePoints, {
+				color: '#6366f1',
+				weight: 4,
+				opacity: 0.85,
+				dashArray: '12 12',
+				className: 'flowing-route-line'
+			}).addTo(leafletMap);
+
+			const midIdx = Math.floor(curvePoints.length / 2);
+			const pPrev = curvePoints[midIdx - 1];
+			const pNext = curvePoints[midIdx + 1];
+
+			const mercY1 = Math.log(Math.tan(Math.PI / 4 + (pPrev[0] * Math.PI) / 180 / 2));
+			const mercY2 = Math.log(Math.tan(Math.PI / 4 + (pNext[0] * Math.PI) / 180 / 2));
+			const mercX1 = (pPrev[1] * Math.PI) / 180;
+			const mercX2 = (pNext[1] * Math.PI) / 180;
+
+			const dyScreen = -(mercY2 - mercY1);
+			const dxScreen = mercX2 - mercX1;
+			const angleDeg = Math.atan2(dyScreen, dxScreen) * (180 / Math.PI);
+
+			arrowMarker = L.marker(curvePoints[midIdx], {
+				icon: L.divIcon({
+					html: `<div style="transform: rotate(${angleDeg}deg); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px;"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0px 1px 2px rgba(255, 255, 255, 0.9)) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.3));"><path d="M9 18l6-6-6-6"/></svg></div>`,
+					iconSize: [36, 36],
+					iconAnchor: [18, 18],
+					className: 'bg-transparent border-0'
+				}),
+				interactive: false
+			}).addTo(leafletMap);
 
 			const bounds = L.latLngBounds([
 				[depLat, depLon],
@@ -108,3 +162,15 @@
 </script>
 
 <div bind:this={mapEl} class="h-full w-full rounded-2xl"></div>
+
+<style>
+	:global(.flowing-route-line) {
+		animation: flow-route 2.5s linear infinite;
+	}
+
+	@keyframes flow-route {
+		to {
+			stroke-dashoffset: -24;
+		}
+	}
+</style>
