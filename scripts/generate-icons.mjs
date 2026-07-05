@@ -51,6 +51,29 @@ async function generateIcons() {
 		);
 	}
 
+	// Generate favicon.ico (32x32 Windows ICO container with PNG payload)
+	const icoPath = path.join(outDir, 'favicon.ico');
+	const icoPngBuffer = await sharp(svgBuffer)
+		.resize(32, 32)
+		.png({ compressionLevel: 9 })
+		.toBuffer();
+
+	const icoHeader = Buffer.alloc(22);
+	icoHeader.writeUInt16LE(0, 0); // Reserved
+	icoHeader.writeUInt16LE(1, 2); // Type: 1 = ICO
+	icoHeader.writeUInt16LE(1, 4); // Number of images: 1
+	icoHeader.writeUInt8(32, 6); // Width
+	icoHeader.writeUInt8(32, 7); // Height
+	icoHeader.writeUInt8(0, 8); // Color palette
+	icoHeader.writeUInt8(0, 9); // Reserved
+	icoHeader.writeUInt16LE(1, 10); // Color planes
+	icoHeader.writeUInt16LE(32, 12); // Bits per pixel
+	icoHeader.writeUInt32LE(icoPngBuffer.length, 14); // Image data size
+	icoHeader.writeUInt32LE(22, 18); // Offset of image data
+
+	fs.writeFileSync(icoPath, Buffer.concat([icoHeader, icoPngBuffer]));
+	console.log(`  ✅ Generated: static/favicon.ico          (32x32 ICO)`);
+
 	console.log('\n🚀 All PWA icons generated successfully!');
 }
 
