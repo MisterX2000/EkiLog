@@ -10,7 +10,6 @@
 		Search,
 		Eye,
 		Briefcase,
-		ChevronDown,
 		Cuboid,
 		PlaneLanding,
 		PlaneTakeoff,

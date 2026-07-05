@@ -14,7 +14,7 @@ async function generateIcons() {
 	try {
 		const sharpModule = await import('sharp');
 		sharp = sharpModule.default || sharpModule;
-	} catch (e) {
+	} catch {
 		console.error('❌ Error: sharp library is required to generate icons.');
 		console.error('Please install it by running: npm install -D sharp');
 		console.error(

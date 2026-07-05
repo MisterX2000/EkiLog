@@ -169,10 +169,10 @@
 
 	$effect(() => {
 		// Re-run whenever coordinates change
-		depLat;
-		depLon;
-		arrLat;
-		arrLon;
+		void depLat;
+		void depLon;
+		void arrLat;
+		void arrLon;
 		if (leafletMap) updateMarkers();
 	});
 </script>

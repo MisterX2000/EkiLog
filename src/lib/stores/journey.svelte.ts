@@ -47,7 +47,7 @@ function toLocalDatetimeString(d: Date): string {
 }
 
 function createJourneyStore() {
-	let data = $state<JourneyData>({
+	const data = $state<JourneyData>({
 		...EMPTY,
 		departure_datetime: toLocalDatetimeString(new Date())
 	});

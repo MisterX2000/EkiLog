@@ -10,3 +10,5 @@ bun.lockb
 
 /.agents/
 skills-lock.json
+/project.inlang/
+/src/lib/paraglide/
