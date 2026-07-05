@@ -4,13 +4,11 @@
 	import { page } from '$app/state';
 	import { locales, localizeHref } from '$lib/paraglide/runtime';
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
 
 	let { children } = $props();
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
 	<meta name="description" content="EkiLog — Träwelling companion for Japanese railway journeys" />
 	<title>EkiLog</title>
 </svelte:head>
