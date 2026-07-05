@@ -656,7 +656,7 @@
 						</div>
 					</div>
 					<div class="flex items-center gap-2">
-						<div class="tooltip tooltip-left" data-tip={m.form_retry_search()}>
+						<div class="sm:tooltip sm:tooltip-left" data-tip={m.form_retry_search()}>
 							<button
 								type="button"
 								onclick={() => {

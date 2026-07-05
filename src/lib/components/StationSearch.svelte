@@ -175,7 +175,7 @@
 			<span class="loading loading-spinner loading-xs text-primary"></span>
 		{:else}
 			<div
-				class="tooltip tooltip-left flex items-center"
+				class="sm:tooltip sm:tooltip-left flex items-center"
 				data-tip={m.station_use_current_location()}
 			>
 				<button

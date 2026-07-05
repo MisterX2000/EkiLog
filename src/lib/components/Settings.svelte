@@ -135,7 +135,7 @@
 				<div class="flex-1">
 					<div class="flex items-center gap-2">
 						<h2 class="card-title text-base">{m.settings_traewelling_token()}</h2>
-						<div class="tooltip tooltip-right" data-tip={m.settings_open_traewelling_link()}>
+						<div class="sm:tooltip sm:tooltip-right" data-tip={m.settings_open_traewelling_link()}>
 							<a
 								href="https://traewelling.de/settings/applications"
 								target="_blank"
@@ -185,12 +185,12 @@
 				</div>
 
 				{#if tokenStatus === 'ok'}
-					<div role="alert" class="alert alert-success alert-soft my-0 min-w-90 flex-1 py-2.5">
+					<div role="alert" class="alert alert-success alert-soft my-0 min-w-full sm:min-w-90 flex-1 py-2.5">
 						<CircleCheck class="h-4 w-4 shrink-0" />
 						<span>{m.settings_connected_as({ name: tokenUser })}</span>
 					</div>
 				{:else if tokenStatus === 'error'}
-					<div role="alert" class="alert alert-error alert-soft my-0 min-w-90 flex-1 py-2.5">
+					<div role="alert" class="alert alert-error alert-soft my-0 min-w-full sm:min-w-90 flex-1 py-2.5">
 						<CircleX class="h-4 w-4 shrink-0" />
 						<span>{tokenError}</span>
 					</div>
@@ -211,7 +211,7 @@
 				<div class="flex-1">
 					<div class="flex items-center gap-2">
 						<h2 class="card-title text-base">{m.settings_gemini_key()}</h2>
-						<div class="tooltip tooltip-right" data-tip={m.settings_open_gemini_link()}>
+						<div class="sm:tooltip sm:tooltip-right" data-tip={m.settings_open_gemini_link()}>
 							<a
 								href="https://aistudio.google.com/api-keys"
 								target="_blank"
@@ -256,12 +256,12 @@
 				</div>
 
 				{#if geminiStatus === 'ok'}
-					<div role="alert" class="alert alert-success alert-soft my-0 min-w-90 flex-1 py-2.5">
+					<div role="alert" class="alert alert-success alert-soft my-0 min-w-full sm:min-w-90 flex-1 py-2.5">
 						<CircleCheck class="h-4 w-4 shrink-0" />
 						<span>{m.settings_gemini_connected({ model: geminiModel })}</span>
 					</div>
 				{:else if geminiStatus === 'error'}
-					<div role="alert" class="alert alert-error alert-soft my-0 min-w-90 flex-1 py-2.5">
+					<div role="alert" class="alert alert-error alert-soft my-0 min-w-full sm:min-w-90 flex-1 py-2.5">
 						<CircleX class="h-4 w-4 shrink-0" />
 						<span>{geminiError}</span>
 					</div>

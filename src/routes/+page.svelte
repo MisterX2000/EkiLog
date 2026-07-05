@@ -61,7 +61,7 @@
 				</div>
 			</div>
 			<div class="navbar-end gap-2">
-				<div class="tooltip tooltip-bottom" data-tip="GitHub">
+				<div class="sm:tooltip sm:tooltip-bottom" data-tip="GitHub">
 					<a
 						class="btn btn-ghost btn-circle"
 						href="https://github.com/MisterX2000/EkiLog"
@@ -132,7 +132,7 @@
 										<p class="text-sm text-base-content/60">{m.form_journey_details_subtitle()}</p>
 									</div>
 								</div>
-								<div class="tooltip tooltip-left" data-tip={m.nav_clear_inputs()}>
+								<div class="sm:tooltip sm:tooltip-left" data-tip={m.nav_clear_inputs()}>
 									<button
 										type="button"
 										onclick={() => {
