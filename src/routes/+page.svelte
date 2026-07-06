@@ -15,6 +15,7 @@
 	import CheckInForm from '$lib/components/CheckInForm.svelte';
 	import WelcomeModal from '$lib/components/WelcomeModal.svelte';
 	import { journey } from '$lib/stores/journey.svelte';
+	import ekiLogIcon from '$lib/assets/EkiLog_shinkansen.svg';
 
 	import { browser } from '$app/environment';
 
@@ -50,11 +51,7 @@
 			class="navbar rounded-box border border-base-300 bg-base-100/90 px-4 shadow-sm backdrop-blur"
 		>
 			<div class="navbar-start gap-3">
-				<div class="avatar avatar-placeholder">
-					<div class="w-11 rounded-box bg-primary/14 text-primary">
-						<TrainFront class="h-6 w-6" />
-					</div>
-				</div>
+				<img src={ekiLogIcon} alt="EkiLog" class="h-8 w-auto" />
 				<div>
 					<p class="text-xs font-semibold uppercase tracking-[0.24em] text-base-content/50">
 						{m.nav_subtitle()}
