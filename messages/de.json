@@ -131,5 +131,16 @@
 	"error_fill_all_fields": "Bitte alle Reisefelder ausf\u00fcllen, bevor eine manuelle Fahrt erstellt wird.",
 
 	"body_car": "Wagen {number}",
-	"body_seat": "Sitz {number}"
+	"body_seat": "Sitz {number}",
+
+	"welcome_title": "Willkommen bei EkiLog!",
+	"welcome_subtitle": "Dein Begleiter beim Loggen japanischer Zugfahrten auf Träwelling.",
+	"welcome_feat_ocr_title": "OCR-Ticket-Scanner",
+	"welcome_feat_ocr_desc": "Scanne Papiertickets oder Screenshots mit Gemini KI, um Zug- und Bahnhofsdetails zu erfassen.",
+	"welcome_feat_search_title": "Live-Abfahrten & Bahnhofs-DB",
+	"welcome_feat_search_desc": "Suche japanische Bahnhöfe offline und finde echte HAFAS-Echtzeit-Abfahrten.",
+	"welcome_feat_checkin_title": "Träwelling-Check-In",
+	"welcome_feat_checkin_desc": "Logge deine Zugfahrten mit einem Klick direkt auf deinem Träwelling-Konto.",
+	"welcome_btn_configure": "API-Schlüssel konfigurieren",
+	"welcome_btn_dismiss": "Schließen"
 }

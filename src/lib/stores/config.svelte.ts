@@ -30,6 +30,9 @@ function createConfigStore() {
 	let geminiModelInfo = $state<string>(loadFromStorage('ekilog.geminiModelInfo', ''));
 	let defaultVisibility = $state<number>(loadFromStorage('ekilog.defaultVisibility', 0));
 	let defaultBusiness = $state<number>(loadFromStorage('ekilog.defaultBusiness', 0));
+	let welcomeModalDismissed = $state<boolean>(
+		loadFromStorage('ekilog.welcomeModalDismissed', false)
+	);
 
 	return {
 		get traewellingToken() {
@@ -73,6 +76,13 @@ function createConfigStore() {
 		set defaultBusiness(v: number) {
 			defaultBusiness = v;
 			persist('ekilog.defaultBusiness', v);
+		},
+		get welcomeModalDismissed() {
+			return welcomeModalDismissed;
+		},
+		set welcomeModalDismissed(v: boolean) {
+			welcomeModalDismissed = v;
+			persist('ekilog.welcomeModalDismissed', v);
 		}
 	};
 }

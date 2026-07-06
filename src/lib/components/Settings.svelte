@@ -185,12 +185,18 @@
 				</div>
 
 				{#if tokenStatus === 'ok'}
-					<div role="alert" class="alert alert-success alert-soft my-0 min-w-full sm:min-w-90 flex-1 py-2.5">
+					<div
+						role="alert"
+						class="alert alert-success alert-soft my-0 min-w-full sm:min-w-90 flex-1 py-2.5"
+					>
 						<CircleCheck class="h-4 w-4 shrink-0" />
 						<span>{m.settings_connected_as({ name: tokenUser })}</span>
 					</div>
 				{:else if tokenStatus === 'error'}
-					<div role="alert" class="alert alert-error alert-soft my-0 min-w-full sm:min-w-90 flex-1 py-2.5">
+					<div
+						role="alert"
+						class="alert alert-error alert-soft my-0 min-w-full sm:min-w-90 flex-1 py-2.5"
+					>
 						<CircleX class="h-4 w-4 shrink-0" />
 						<span>{tokenError}</span>
 					</div>
@@ -256,12 +262,18 @@
 				</div>
 
 				{#if geminiStatus === 'ok'}
-					<div role="alert" class="alert alert-success alert-soft my-0 min-w-full sm:min-w-90 flex-1 py-2.5">
+					<div
+						role="alert"
+						class="alert alert-success alert-soft my-0 min-w-full sm:min-w-90 flex-1 py-2.5"
+					>
 						<CircleCheck class="h-4 w-4 shrink-0" />
 						<span>{m.settings_gemini_connected({ model: geminiModel })}</span>
 					</div>
 				{:else if geminiStatus === 'error'}
-					<div role="alert" class="alert alert-error alert-soft my-0 min-w-full sm:min-w-90 flex-1 py-2.5">
+					<div
+						role="alert"
+						class="alert alert-error alert-soft my-0 min-w-full sm:min-w-90 flex-1 py-2.5"
+					>
 						<CircleX class="h-4 w-4 shrink-0" />
 						<span>{geminiError}</span>
 					</div>

@@ -131,5 +131,16 @@
 	"error_fill_all_fields": "Fill in all journey fields before creating a manual trip.",
 
 	"body_car": "Car {number}",
-	"body_seat": "Seat {number}"
+	"body_seat": "Seat {number}",
+
+	"welcome_title": "Welcome to EkiLog!",
+	"welcome_subtitle": "Your companion for logging Japanese railway journeys to Träwelling.",
+	"welcome_feat_ocr_title": "OCR Ticket Scanner",
+	"welcome_feat_ocr_desc": "Scan paper tickets or screenshots with Gemini AI to extract train and station details.",
+	"welcome_feat_search_title": "Live Departures & Station DB",
+	"welcome_feat_search_desc": "Search Japanese stations offline and match real-time HAFAS departures.",
+	"welcome_feat_checkin_title": "Träwelling Check-In",
+	"welcome_feat_checkin_desc": "Log your train rides directly to your Träwelling account with one click.",
+	"welcome_btn_configure": "Configure API Keys",
+	"welcome_btn_dismiss": "Dismiss"
 }

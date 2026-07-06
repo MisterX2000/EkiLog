@@ -131,5 +131,16 @@
 	"error_fill_all_fields": "手動乗車を作成する前に、すべての乗車フィールドを入力してください。",
 
 	"body_car": "{number}号車",
-	"body_seat": "{number}番座席"
+	"body_seat": "{number}番座席",
+
+	"welcome_title": "EkiLogへようこそ！",
+	"welcome_subtitle": "日本の鉄道乗車記録をTräwellingにスムーズに記録するアシスタント。",
+	"welcome_feat_ocr_title": "OCRチケットスキャナー",
+	"welcome_feat_ocr_desc": "紙のきっぷやスクリーンショットをGemini AIでスキャンし、列車や駅の詳細を自動抽出します。",
+	"welcome_feat_search_title": "リアルタイム発車情報＆駅データベース",
+	"welcome_feat_search_desc": "日本の駅をオフラインで検索し、HAFASのリアルタイム発車情報と照合します。",
+	"welcome_feat_checkin_title": "Träwellingチェックイン",
+	"welcome_feat_checkin_desc": "ワンクリックで電車移動をTräwellingアカウントに直接記録します。",
+	"welcome_btn_configure": "APIキーを設定する",
+	"welcome_btn_dismiss": "閉じる"
 }

@@ -131,5 +131,16 @@
 	"error_fill_all_fields": "Completa todos los campos del viaje antes de crear un viaje manual.",
 
 	"body_car": "Vagón {number}",
-	"body_seat": "Asiento {number}"
+	"body_seat": "Asiento {number}",
+
+	"welcome_title": "¡Te damos la bienvenida a EkiLog!",
+	"welcome_subtitle": "Tu compañero para registrar viajes en tren por Japón en Träwelling.",
+	"welcome_feat_ocr_title": "Escáner OCR de Billetes",
+	"welcome_feat_ocr_desc": "Escanea billetes en papel o capturas con Gemini IA para extraer datos del tren y estaciones.",
+	"welcome_feat_search_title": "Salidas en Directo y BD Estaciones",
+	"welcome_feat_search_desc": "Busca estaciones japonesas sin conexión y encuentra salidas HAFAS en tiempo real.",
+	"welcome_feat_checkin_title": "Check-In en Träwelling",
+	"welcome_feat_checkin_desc": "Registra tus viajes en tren directamente en tu cuenta de Träwelling con un clic.",
+	"welcome_btn_configure": "Configurar Claves API",
+	"welcome_btn_dismiss": "Cerrar"
 }

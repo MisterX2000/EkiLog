@@ -131,5 +131,16 @@
 	"error_fill_all_fields": "Renseignez tous les champs du trajet avant de créer un trajet manuel.",
 
 	"body_car": "Voiture {number}",
-	"body_seat": "Siège {number}"
+	"body_seat": "Siège {number}",
+
+	"welcome_title": "Bienvenue sur EkiLog !",
+	"welcome_subtitle": "Votre compagnon pour enregistrer vos trajets ferroviaires japonais sur Träwelling.",
+	"welcome_feat_ocr_title": "Scanner OCR de Billets",
+	"welcome_feat_ocr_desc": "Scannez vos billets papier ou captures avec l'IA Gemini pour extraire les détails du train et des gares.",
+	"welcome_feat_search_title": "Départs en Direct & BD Gares",
+	"welcome_feat_search_desc": "Recherchez des gares japonaises hors ligne et trouvez les départs HAFAS en temps réel.",
+	"welcome_feat_checkin_title": "Check-In Träwelling",
+	"welcome_feat_checkin_desc": "Enregistrez vos trajets en train directement sur votre compte Träwelling en un clic.",
+	"welcome_btn_configure": "Configurer les Clés API",
+	"welcome_btn_dismiss": "Fermer"
 }

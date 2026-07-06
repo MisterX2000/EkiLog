@@ -13,6 +13,7 @@
 	import Settings from '$lib/components/Settings.svelte';
 	import Scanner from '$lib/components/Scanner.svelte';
 	import CheckInForm from '$lib/components/CheckInForm.svelte';
+	import WelcomeModal from '$lib/components/WelcomeModal.svelte';
 	import { journey } from '$lib/stores/journey.svelte';
 
 	import { browser } from '$app/environment';
@@ -41,6 +42,7 @@
 </script>
 
 <div class="min-h-dvh bg-base-200">
+	<WelcomeModal {setTab} />
 	<div
 		class="mx-auto flex min-h-dvh w-full max-w-6xl flex-col px-3 pb-24 pt-3 sm:px-4 sm:pb-28 sm:pt-4"
 	>
